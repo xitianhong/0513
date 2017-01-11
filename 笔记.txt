@@ -1,0 +1,216 @@
+﻿
+git  grunt  gulp 
+------------------------------------------
+代码托管工具 代码同步！
+
+svn：集中式  慢—— 基于文件
+
+git：分布式  快—— 基于二进制流
+
+
+             dos命令    linux命令
+查询          dir         ls  —— list
+切换目录            cd
+创建目录      md          mkdir
+删除目录      rd          rmdir
+清屏          cls         clear
+退出窗口            exit
+
+-----------------------------------------------
+
+vi/vim
+
+1 vi  ----> shift+: ==> q
+2 vi 文件  ---> 没有没有修改 shift+: ==> q
+                文件修改     ESC ==> shift+: ==> wq
+
+-----------------------------------------------
+
+echo "# taobao" >> README.md    追加到最后面
+                >               覆盖
+-----------------------------------------------
+
+创建仓库：
+
+1 没有初始化文件 
+执行命令
+第一次提交
+echo "# bbbb" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/chen00jian/bbbb.git
+git push -u origin master
+
+
+第二次提交：
+git add 文件名
+git commit -m "日志"
+git push
+
+服务里面下载文件：
+git pull  
+
+------------------------------------------
+**** 所有的操作  先pull再push!!!
+------------------------------------------
+
+
+2 有初始化文件
+
+git clone https://github.com/chen00jian/xxxx.git
+
+clone:包含目录结构的！
+
+操作三部曲：
+1 git add .
+2 git commit -m "log"
+3 git push
+
+pwd：显示当前所在目录
+
+-----------------------------------------------
+
+配置：
+
+1 生成一个密钥
+  ssh-keygen -t rsa -C "邮箱"
+
+   C:\Users\用户名\.ssh
+         |--id_rsa
+         |--id_rsa.pub √ 
+         
+         Settings 
+          ----> SSH and GPG keys
+          ----> New SSH key 
+2 修改配置文件
+  查看配置文件 git config -l  l -- list
+
+user.name
+	git config --global user.name "账号名称"
+user.email
+  git config --global user.email "注册的邮箱"
+
+-----------------------------------------------
+
+git发布博客：
+
+1 创建仓库名称  用户名.github.com/io
+
+2 settings
+   --->  Launch automatic page generator
+   --->  Continue to layouts
+   --->  Publish page
+   
+   
+ 正确的网址：https://用户名.github.io/
+  
+-----------------------------------------------
+
+grunt  代码自动化构建工具
+
+http://gruntjs.com/
+
+运行前提条件： 依赖nodejs
+
+npm: node package manager  包管理工具
+
+安装mysql模块
+
+npm install mysql
+
+
+运行条件2个
+1 客户端环境
+	npm install grunt-cli -g
+2 命令行环境
+  npm install grunt 
+
+验证安装成功：
+grunt -version
+
+必须有2个文件：
+1 入口文件  gruntfile.js
+2 工程文件  package.json  --save-dev
+            1 手工创建  ×  会报错
+            2 自动创建  √  npm init
+
+
+入口文件三步
+1 加载模块  
+       grunt.loadNPMTasks(模块名称);
+2 配置任务  
+
+       grount.initConfig({
+       		主任务：{
+       		    子任务1：{
+       		    	 src: 源
+       		    	 dest:目标
+       		    }
+       		    子任务2：{
+       		    	 src: 源
+       		    	 dest:目标
+       		    
+       		    }
+       		}
+       });
+
+		
+3 注册任务
+  grunt.regiestTask("default",[主任务1,....]);
+
+------------------------------------------------ 
+npm install grunt-contrib-uglify --save-dev
+npm install grunt-contrib-concat --save-dev
+npm install grunt-contrib-cssmin --save-dev
+
+
+npm install grunt-contrib-cssmin grunt-contrib-concat grunt-contrib-cssmin -D
+
+------------------------------------------------ 
+总结：
+
+工程文件：  
+
+1 npm init
+2 npm install ---> --save-dev  <==> -D
+
+工作流程：
+1 先拷贝源文件： src  入口文件 工程文件
+2 安装模块  npm install
+
+------------------------------------------------ 
+
+gulp:代码自动化构建工具
+
+http://gulpjs.com/
+
+svn--git:
+
+grunt-gulp:
+ grunt  慢 —— 文本 
+ gulp   快 —— 流
+
+
+运行条件2个
+1 客户端环境
+	npm install gulp-cli -g
+2 命令行环境
+  npm install gulp --save-dev 
+  
+  
+  
+ 必须有2个文件：
+1 入口文件  gulpfile.js
+2 工程文件  package.json  --save-dev
+            1 手工创建  ×  会报错
+            2 自动创建  √  npm init 
+  
+  
+npm install gulp-uglify  --save-dev
+npm install gulp-rename  --save-dev
+npm install gulp-concat  --save-dev
+npm install gulp-uglifycss --save-dev
+npm install gulp-cssmin --save-dev
+npm install del --save-dev
+
